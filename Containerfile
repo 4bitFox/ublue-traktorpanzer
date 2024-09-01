@@ -36,7 +36,12 @@ ARG SOURCE_IMAGE="silverblue"
 ARG SOURCE_SUFFIX="-main"
 
 ## SOURCE_TAG arg must be a version built for the specific image: eg, 39, 40, gts, latest
-ARG SOURCE_TAG="latest"
+ARG SOURCE_TAG="40"
+
+
+## Cache images for CoreOS kernel & ZFS kmod RPMs
+FROM ghcr.io/ublue-os/coreos-stable-kernel:${SOURCE_TAG} AS kernel-cache
+FROM ghcr.io/ublue-os/akmods-zfs:coreos-stable-${SOURCE_TAG} AS zfs-cache
 
 
 ### 2. SOURCE IMAGE
@@ -50,7 +55,10 @@ FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
 
 COPY build.sh /tmp/build.sh
 
-RUN mkdir -p /var/lib/alternatives && \
+RUN --mount=type=cache,dst=/var/cache/rpm-ostree \
+    --mount=type=bind,from=kernel-cache,src=/tmp/rpms,dst=/tmp/rpms/kernel \
+    --mount=type=bind,from=zfs-cache,src=/rpms/kmods/zfs,dst=/tmp/rpms/zfs \
+    mkdir -p /var/lib/alternatives && \
     /tmp/build.sh && \
     ostree container commit
 ## NOTES:
