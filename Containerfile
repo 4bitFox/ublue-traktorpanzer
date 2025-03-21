@@ -41,7 +41,6 @@ ARG FEDORA_VERSION=41
 
 
 ## Cache images for CoreOS kernel & ZFS kmod RPMs
-FROM ghcr.io/ublue-os/coreos-stable-kernel:${SOURCE_TAG} AS kernel-cache
 FROM ghcr.io/ublue-os/akmods-zfs:coreos-stable-${SOURCE_TAG} AS zfs-cache
 
 
@@ -57,7 +56,7 @@ FROM ghcr.io/ublue-os/${SOURCE_IMAGE}${SOURCE_SUFFIX}:${SOURCE_TAG}
 COPY build.sh /tmp/build.sh
 
 RUN --mount=type=cache,dst=/var/cache/rpm-ostree \
-    --mount=type=bind,from=kernel-cache,src=/tmp/rpms,dst=/tmp/rpms/kernel \
+    --mount=type=bind,from=zfs-cache,src=/kernel-rpms,dst=/tmp/rpms/kernel \
     --mount=type=bind,from=zfs-cache,src=/rpms/kmods/zfs,dst=/tmp/rpms/zfs \
     mkdir -p /var/lib/alternatives && \
     /tmp/build.sh && \
