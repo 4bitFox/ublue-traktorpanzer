@@ -3,7 +3,7 @@
 # Surce Images: https://github.com/orgs/ublue-os/packages
 
 ARG SOURCE_IMAGE="bazzite-gnome"
-ARG SORUCE_TAG="stable-43"
+ARG SOURCE_TAG="stable-43"
 
 ARG SOURCE_IMAGE_ZFS="akmods-zfs"
 ARG SOURCE_TAG_ZFS="coreos-stable-43"
