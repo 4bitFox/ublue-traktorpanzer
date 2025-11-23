@@ -1,7 +1,7 @@
 ## BUILD ARGS
 # Surce Images: https://github.com/orgs/ublue-os/packages
 ARG SOURCE_IMAGE="bazzite-gnome"
-ARG SOURCE_TAG="43"
+ARG SOURCE_TAG="stable-43"
 ARG IMAGE_NAME="traktorpanzer"
 ARG IMAGE_VENDOR="alya"
 
