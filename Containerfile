@@ -1,14 +1,19 @@
 ## BUILD ARGS
+
 # Surce Images: https://github.com/orgs/ublue-os/packages
+
 ARG SOURCE_IMAGE="bazzite-gnome"
-ARG SOURCE_TAG="stable-43"
+ARG SORUCE_TAG="stable-43"
+
+ARG SOURCE_IMAGE_ZFS="akmods-zfs"
+ARG SOURCE_TAG_ZFS="coreos-stable-43"
+
 ARG IMAGE_NAME="traktorpanzer"
 ARG IMAGE_VENDOR="alya"
 
-
 ### IMAGES
 # ZFS kmod RPMs incl. kernel
-FROM ghcr.io/ublue-os/akmods-zfs:coreos-stable-${SOURCE_TAG} AS zfs-cache
+FROM ghcr.io/ublue-os/${SOURCE_IMAGE_ZFS}:${SOURCE_TAG_ZFS} AS zfs-cache
 # standard Containerfile
 FROM ghcr.io/ublue-os/${SOURCE_IMAGE}:${SOURCE_TAG}
 
