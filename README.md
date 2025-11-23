@@ -1,3 +1,3 @@
-# Changes to the Silverblue image:
+# Changes to the Kinoite image:
 
 - Add ZFS support
