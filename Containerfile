@@ -2,6 +2,8 @@
 ARG SOURCE_IMAGE="silverblue"
 ARG SOURCE_SUFFIX="-main"
 ARG SOURCE_TAG="42"
+ARG IMAGE_NAME="traktorpanzer"
+ARG IMAGE_VENDOR="alya"
 
 
 ### IMAGES
