@@ -2,7 +2,7 @@
 
 # Surce Images: https://github.com/orgs/ublue-os/packages
 
-ARG SOURCE_IMAGE="kinoite-main"
+ARG SOURCE_IMAGE="silverblue-main"
 ARG SOURCE_TAG="42"
 
 ARG SOURCE_IMAGE_ZFS="akmods-zfs"
