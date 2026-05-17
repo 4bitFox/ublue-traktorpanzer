@@ -3,10 +3,10 @@
 # Surce Images: https://github.com/orgs/ublue-os/packages
 
 ARG SOURCE_IMAGE="silverblue-main"
-ARG SOURCE_TAG="42"
+ARG SOURCE_TAG="44"
 
 ARG SOURCE_IMAGE_ZFS="akmods-zfs"
-ARG SOURCE_TAG_ZFS="coreos-stable-42"
+ARG SOURCE_TAG_ZFS="coreos-stable-44"
 
 ARG IMAGE_NAME="traktorpanzer"
 ARG IMAGE_VENDOR="alya"
